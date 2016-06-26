@@ -1,12 +1,22 @@
-defmodule Patrician.Town do
+defmodule Patrician.Towns do
+  @towns [:Luebeck, :Rostock]
+  alias Patrician.{Town}
   require Logger
-  alias Patrician.{Material, Materials}
-  defstruct [:name, :materials, :comparison]
-
+  
   def new(name, materials \\ %{}) do
     %Patrician.Town{name: name, materials: materials, comparison: []}
   end
 
+  def start_link(town) do 
+    Agent.start_link(fn -> town end, name: town.name)
+    Logger.info("Initialized #{town.name}")
+  end 
+  
+  def init() do
+    for town <- @towns do
+      Town.new(town) |> Town.start_link
+    end 
+  end
   def receive_update(town_name, materials) do
     Logger.info("#{town_name} updated") 
     Agent.get_and_update(town_name,
@@ -21,22 +31,4 @@ defmodule Patrician.Town do
     )
   end
 
-  def start_link(town) do 
-    Agent.start_link(fn -> town end, name: town.name)
-    Logger.info("Initialized #{town.name}")
-  end
-  
 end
-
-defmodule Patrician.Towns do
-  @towns [:Luebeck, :Rostock]
-  alias Patrician.{Town}
-  
-  
-  def init() do
-    for town <- @towns do
-      Town.new(town) |> Town.start_link
-    end 
-  end 
-end
-  

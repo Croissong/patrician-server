@@ -19,7 +19,7 @@ defmodule Server.Mixfile do
   def application do
     [mod: {Server, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :maptu]]
   end
 
   # Specifies which paths to compile per environment.
@@ -35,6 +35,7 @@ defmodule Server.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.1"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
+     {:maptu, ">= 0.0.0"},
      {:cowboy, "~> 1.0"}]
   end
 

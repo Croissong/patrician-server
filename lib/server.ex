@@ -16,7 +16,7 @@ defmodule Server do
       # worker(Server.Worker, [arg1, arg2, arg3]),
     ]
 
-    Towns.init()
+    # Towns.init()
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
