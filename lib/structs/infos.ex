@@ -3,6 +3,10 @@ defmodule Patrician.Infos do
   @derive [Poison.Encoder]
   defstruct [:ship, :town, :player]
 
+  def new(ship, town, player) do
+    %__MODULE__{ship: ship, town: town, player: player}
+  end
+  
   def from_map(map) do
     Maptu.struct!(Patrician.Infos, map)
     |> Map.update!(:ship, &Ship.from_map(&1))
