@@ -3,8 +3,8 @@ defmodule PatricianServer.Schema do
   import_types PatricianServer.Schema.Types
 
   query do
-    field :posts, list_of(:post) do
-      resolve &PatricianServer.PostResolver.all/2
+    field :towns, list_of(:town) do
+      resolve &PatricianServer.TownResolver.all/2
     end
   end
 
