@@ -1,5 +1,6 @@
 defmodule PatricianServer.Web.UserSocket do
   use Phoenix.Socket
+  use Absinthe.Phoenix.Channel
 
   ## Channels
   # channel "room:*", PatricianServer.Web.RoomChannel
@@ -19,6 +20,10 @@ defmodule PatricianServer.Web.UserSocket do
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
   def connect(_params, socket) do
+    socket = socket |> assign(:absinthe, %{
+          schema: PatricianServer.Web.Schema,
+                              })
+
     {:ok, socket}
   end
 

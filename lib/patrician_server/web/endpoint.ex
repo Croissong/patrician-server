@@ -1,12 +1,8 @@
 defmodule PatricianServer.Web.Endpoint do
   use Phoenix.Endpoint, otp_app: :patrician_server
+  use Absinthe.Phoenix.Endpoint
 
   socket "/socket", PatricianServer.Web.UserSocket
-
-  plug Plug.Parsers,
-    parsers: [:urlencoded, :multipart, :json, Absinthe.Plug.Parser],
-    pass: ["*/*"],
-    json_decoder: Poison
 
   plug PatricianServer.Router
 
