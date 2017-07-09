@@ -3,12 +3,13 @@ defmodule PatricianServer.Web.Endpoint do
 
   socket "/socket", PatricianServer.Web.UserSocket
 
-  @doc """
-  Callback invoked for dynamically configuring the endpoint.
+  plug Plug.Parsers,
+    parsers: [:urlencoded, :multipart, :json, Absinthe.Plug.Parser],
+    pass: ["*/*"],
+    json_decoder: Poison
 
-  It receives the endpoint configuration and checks if
-  configuration should be loaded from the system environment.
-  """
+  plug PatricianServer.Router
+
   def init(_key, config) do
     if config[:load_from_system_env] do
       port = System.get_env("PORT") || raise "expected the PORT environment variable to be set"
