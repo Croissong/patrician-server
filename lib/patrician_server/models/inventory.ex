@@ -1,12 +1,13 @@
-defmodule PatricianServer.Town do
+defmodule PatricianServer.Inventory do
   use Ecto.Schema
 
   import Ecto.{Changeset}
-  alias PatricianServer.{Inventory}
 
-  schema "towns" do
-    field :name, :string
-    has_many :inventories, Inventory
+  alias PatricianServer.{Town}
+
+  schema "inventories" do
+    field :date, :date
+    belongs_to :town, Town
   end
 
   def changeset(struct, params \\ %{}) do
