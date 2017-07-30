@@ -29,15 +29,15 @@ defmodule PatricianServer.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:absinthe, github: "absinthe-graphql/absinthe", branch: "subscriptions", override: true},
-      {:absinthe_phoenix, github: "absinthe-graphql/absinthe_phoenix", branch: "subscriptions", override: true},
+      {:absinthe, github: "absinthe-graphql/absinthe", override: true},
+      {:absinthe_phoenix, github: "absinthe-graphql/absinthe_phoenix", override: true},
       {:absinthe_plug, "~> 1.3.1"},
-      {:phoenix, "~> 1.3.0-rc"},
-      {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix_ecto, "~> 3.2"},
-      {:postgrex, ">= 0.0.0"},
-      {:cowboy, "~> 1.0"},
-      {:credo, "~> 0.8", only: [:dev, :test], runtime: false}
+      {:phoenix, "~> 1.3.0"},
+      {:phoenix_pubsub, "~> 1.0.2"},
+      {:phoenix_ecto, "~> 3.2.3"},
+      {:postgrex, "~> 0.13.3"},
+      {:cowboy, "~> 1.1.2"},
+      {:credo, "~> 0.8.4", only: [:dev, :test], runtime: false}
     ]
   end
 

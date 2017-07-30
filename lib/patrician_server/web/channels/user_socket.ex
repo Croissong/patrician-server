@@ -1,6 +1,6 @@
 defmodule PatricianServer.Web.UserSocket do
   use Phoenix.Socket
-  use Absinthe.Phoenix.Channel
+  use Absinthe.Phoenix.Socket
 
   ## Channels
   # channel "room:*", PatricianServer.Web.RoomChannel
