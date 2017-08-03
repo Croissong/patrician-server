@@ -3,13 +3,40 @@ defmodule PatricianServer.Schema do
   import_types PatricianServer.Schema.Types
 
   query do
-    field :towns, list_of(:town) do
-      resolve &PatricianServer.TownResolver.all/2
-    end
 
     field :inventories, list_of(:inventory) do
+      arg :town_id, non_null(:id)
       resolve &PatricianServer.InventoryResolver.all/2
     end
   end
 
+  mutation do
+    field :add_inventory, :inventory do
+      arg :town_id, non_null(:id)
+      arg :date, non_null(:string)
+
+      resolve &PatricianServer.InventoryResolver.create/2
+    end
+  end
+
+  subscription do
+    field :inventory_added, :inventory do
+      arg :town_id, non_null(:id)
+
+      topic fn args ->
+        args.town_id
+      end
+
+      trigger :add_inventory, topic: fn inventory ->
+        inventory.town_id
+      end
+
+      resolve fn %{inventory_added: inventory}, _, _ ->
+        {:ok, inventory}
+      end
+
+
+    end
+
+  end
 end

@@ -12,7 +12,7 @@ defmodule PatricianServer.Inventory do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [])
-    |> validate_required([])
+    |> cast(params, [:date, :town_id])
+    |> validate_required([:date, :town_id])
   end
 end

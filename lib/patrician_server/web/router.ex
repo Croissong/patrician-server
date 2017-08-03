@@ -17,6 +17,8 @@ defmodule PatricianServer.Router do
 
     forward "/graphiql",
       Absinthe.Plug.GraphiQL,
-      schema: PatricianServer.Schema
+      schema: PatricianServer.Schema,
+      socket: PatricianServer.Web.ApiSocket,
+      interface: :simple
   end
 end

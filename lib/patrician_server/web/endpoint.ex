@@ -2,7 +2,7 @@ defmodule PatricianServer.Web.Endpoint do
   use Phoenix.Endpoint, otp_app: :patrician_server
   use Absinthe.Phoenix.Endpoint
 
-  socket "/socket", PatricianServer.Web.UserSocket
+  socket "/socket", PatricianServer.Web.ApiSocket
 
   plug PatricianServer.Router
 

@@ -31,7 +31,7 @@ defmodule PatricianServer.Mixfile do
     [
       {:absinthe, github: "absinthe-graphql/absinthe", override: true},
       {:absinthe_phoenix, github: "absinthe-graphql/absinthe_phoenix", override: true},
-      {:absinthe_plug, "~> 1.3.1"},
+      {:absinthe_plug, github: "absinthe-graphql/absinthe_plug", override: true},
       {:phoenix, "~> 1.3.0"},
       {:phoenix_pubsub, "~> 1.0.2"},
       {:phoenix_ecto, "~> 3.2.3"},
