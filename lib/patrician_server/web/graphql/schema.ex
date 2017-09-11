@@ -23,8 +23,8 @@ defmodule PatricianServer.Schema do
     field :inventory_added, :inventory do
       arg :town_id, non_null(:id)
 
-      topic fn args ->
-        args.town_id
+      config fn args, _ ->
+        {:ok, topic: args.town_id}
       end
 
       trigger :add_inventory, topic: fn inventory ->
