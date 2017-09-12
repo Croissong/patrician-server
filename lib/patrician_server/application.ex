@@ -6,6 +6,7 @@ defmodule PatricianServer.Application do
       supervisor(PatricianServer.Repo, []),
       supervisor(PatricianServer.Web.Endpoint, []),
       supervisor(Absinthe.Subscription, [PatricianServer.Web.Endpoint]),
+      supervisor(PatricianServer.StateServer, [])
     ]
 
     opts = [strategy: :one_for_one, name: PatricianServer.Supervisor]

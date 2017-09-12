@@ -17,7 +17,7 @@ defmodule PatricianServer.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {PatricianServer.Application, []},
-     extra_applications: [:logger, :runtime_tools]]
+     extra_applications: [:amqp, :logger, :runtime_tools]]
   end
 
   # Specifies which paths to compile per environment.
@@ -32,6 +32,7 @@ defmodule PatricianServer.Mixfile do
       {:absinthe, github: "absinthe-graphql/absinthe", override: true},
       {:absinthe_phoenix, github: "absinthe-graphql/absinthe_phoenix", override: true},
       {:absinthe_plug, github: "absinthe-graphql/absinthe_plug", override: true},
+      {:amqp, "~> 1.0.0-pre.1"},
       {:phoenix, "~> 1.3.0"},
       {:phoenix_pubsub, "~> 1.0.2"},
       {:phoenix_ecto, "~> 3.2.3"},
